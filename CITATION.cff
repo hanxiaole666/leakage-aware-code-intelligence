@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript."
+title: "Two-way leakage audit and abstention diagnostics for code vulnerability benchmarks (ESWA submission)"
+abstract: "Code and result records for a controlled study showing that a group split built from detected near-duplicate clusters can report zero detector overlap while leaving substantial true-family overlap, with dose-response estimation and abstention diagnostics."
+authors:
+  - family-names: Han
+    given-names: Xiaole
+    orcid: "https://orcid.org/0009-0009-9611-2368"
+    affiliation: "Business School, Qilu Institute of Technology, Jinan, Shandong 250200, China"
+version: 1.0.0
+date-released: 2026-11-20
+repository-code: "https://github.com/hanxiaole666/leakage-aware-code-intelligence"
+license: MIT
+keywords:
+  - evaluation leakage
+  - benchmark contamination
+  - group splitting
+  - near-duplicate detection
+  - selective classification

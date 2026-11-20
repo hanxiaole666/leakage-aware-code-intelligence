@@ -1,0 +1,811 @@
+{
+  "purpose": "Revision evidence for referee response E1-E5, E7",
+  "dataset": {
+    "n_records": 1200,
+    "n_families": 200,
+    "seed": 42
+  },
+  "E1_dual_overlap": {
+    "detector": {
+      "n_clusters": 321,
+      "pairwise_purity": 0.9957,
+      "pair_precision": 0.9957,
+      "pair_recall": 0.6983,
+      "pair_f1": 0.8209,
+      "pair_tp": 2095,
+      "pair_fp": 9,
+      "pair_fn": 905,
+      "n_true_same_pairs": 3000,
+      "mean_cluster_size": 3.7383
+    },
+    "overlap_by_protocol": {
+      "random": {
+        "n_train": 840,
+        "n_val": 180,
+        "n_test": 180,
+        "sample_overlap_rate": 0.0,
+        "true_family_overlap_rate": 0.9833,
+        "shortcut_overlap_legacy": 0.9833,
+        "shortcut_overlap_is_redundant_with_true_family": true,
+        "detected_cluster_overlap_rate": 0.9111,
+        "clone_family_overlap_rate": 0.9833
+      },
+      "temporal": {
+        "n_train": 840,
+        "n_val": 180,
+        "n_test": 180,
+        "sample_overlap_rate": 0.0,
+        "true_family_overlap_rate": 0.0,
+        "shortcut_overlap_legacy": 0.0,
+        "shortcut_overlap_is_redundant_with_true_family": true,
+        "detected_cluster_overlap_rate": 0.0167,
+        "clone_family_overlap_rate": 0.0
+      },
+      "clone_aware": {
+        "n_train": 840,
+        "n_val": 180,
+        "n_test": 180,
+        "sample_overlap_rate": 0.0,
+        "true_family_overlap_rate": 0.0,
+        "shortcut_overlap_legacy": 0.0,
+        "shortcut_overlap_is_redundant_with_true_family": true,
+        "detected_cluster_overlap_rate": 0.0,
+        "clone_family_overlap_rate": 0.0
+      },
+      "detector_aware": {
+        "n_train": 832,
+        "n_val": 177,
+        "n_test": 191,
+        "sample_overlap_rate": 0.0,
+        "true_family_overlap_rate": 0.4084,
+        "shortcut_overlap_legacy": 0.4084,
+        "shortcut_overlap_is_redundant_with_true_family": true,
+        "detected_cluster_overlap_rate": 0.0,
+        "clone_family_overlap_rate": 0.4084
+      }
+    },
+    "random_overlap_analytic_expectation": 0.9976
+  },
+  "E2_common_holdout": {
+    "family_disjoint_train": {
+      "accuracy": 0.6417,
+      "f1_macro": 0.6778,
+      "f1_micro": 0.6417,
+      "precision_macro": 0.8517,
+      "recall_macro": 0.6756,
+      "mcc": 0.6286,
+      "fpr": 0.0819,
+      "auprc_macro": 0.7493
+    },
+    "same_test_with_family_leak": {
+      "accuracy": 0.65,
+      "f1_macro": 0.6856,
+      "f1_micro": 0.65,
+      "precision_macro": 0.8667,
+      "recall_macro": 0.6622,
+      "mcc": 0.6278,
+      "fpr": 0.0848,
+      "auprc_macro": 0.7706
+    },
+    "n_test": 240,
+    "n_test_families": 40,
+    "leaked_families": 8
+  },
+  "E3_detector_profile": {
+    "threshold_sweep": [
+      {
+        "threshold": 0.8,
+        "n_clusters": 135,
+        "pair_precision": 0.0216,
+        "pair_recall": 0.936,
+        "pair_f1": 0.0423,
+        "pair_fp": 127057,
+        "pair_fn": 192,
+        "mean_cluster_size": 8.8889
+      },
+      {
+        "threshold": 0.85,
+        "n_clusters": 233,
+        "pair_precision": 0.3366,
+        "pair_recall": 0.8507,
+        "pair_f1": 0.4823,
+        "pair_fp": 5030,
+        "pair_fn": 448,
+        "mean_cluster_size": 5.1502
+      },
+      {
+        "threshold": 0.9,
+        "n_clusters": 321,
+        "pair_precision": 0.9957,
+        "pair_recall": 0.6983,
+        "pair_f1": 0.8209,
+        "pair_fp": 9,
+        "pair_fn": 905,
+        "mean_cluster_size": 3.7383
+      },
+      {
+        "threshold": 0.92,
+        "n_clusters": 344,
+        "pair_precision": 1.0,
+        "pair_recall": 0.6503,
+        "pair_f1": 0.7881,
+        "pair_fp": 0,
+        "pair_fn": 1049,
+        "mean_cluster_size": 3.4884
+      },
+      {
+        "threshold": 0.95,
+        "n_clusters": 372,
+        "pair_precision": 1.0,
+        "pair_recall": 0.5973,
+        "pair_f1": 0.7479,
+        "pair_fp": 0,
+        "pair_fn": 1208,
+        "mean_cluster_size": 3.2258
+      }
+    ],
+    "exact_match_baseline": {
+      "method": "exact_match",
+      "n_clusters": 10,
+      "pair_precision": 0.0066,
+      "pair_recall": 0.3357,
+      "pair_f1": 0.0129,
+      "pair_tp": 1007,
+      "pair_fp": 151939,
+      "pair_fn": 1993
+    },
+    "label_free_rule": {
+      "method": "largest Jaccard gap between consecutive sorted thresholds",
+      "note": "reported as a candidate; selection does not read planted family labels",
+      "thresholds": [
+        0.8,
+        0.85,
+        0.9,
+        0.92,
+        0.95
+      ]
+    }
+  },
+  "E4_diversity": {
+    "1": {
+      "macro_f1": 0.6876,
+      "accuracy": 0.6625,
+      "n_train": 160,
+      "config_hash": "9c4e8d5f7d1da11e",
+      "coef_l1": 74.86,
+      "n_distinct_train_features": 160
+    },
+    "2": {
+      "macro_f1": 0.6455,
+      "accuracy": 0.6083,
+      "n_train": 320,
+      "config_hash": "7f71901c20f48412",
+      "coef_l1": 96.617,
+      "n_distinct_train_features": 273
+    },
+    "3": {
+      "macro_f1": 0.6455,
+      "accuracy": 0.6083,
+      "n_train": 480,
+      "config_hash": "c52f44490c231d30",
+      "coef_l1": 109.262,
+      "n_distinct_train_features": 332
+    },
+    "4": {
+      "macro_f1": 0.6455,
+      "accuracy": 0.6083,
+      "n_train": 640,
+      "config_hash": "4ffaf518dc77cae3",
+      "coef_l1": 116.004,
+      "n_distinct_train_features": 379
+    },
+    "5": {
+      "macro_f1": 0.6455,
+      "accuracy": 0.6083,
+      "n_train": 800,
+      "config_hash": "c7e28ad018a2be3c",
+      "coef_l1": 120.713,
+      "n_distinct_train_features": 413
+    },
+    "6": {
+      "macro_f1": 0.6455,
+      "accuracy": 0.6083,
+      "n_train": 960,
+      "config_hash": "0ab2e7cf41d781c9",
+      "coef_l1": 123.668,
+      "n_distinct_train_features": 441
+    },
+    "_integrity": {
+      "all_rows_distinct_configs": true,
+      "n_rows": 6
+    }
+  },
+  "E5_multiseed": {
+    "n_seeds": 10,
+    "seed_note": "10 split/estimator seeds on the same deterministic corpus; generator-seed variation is a documented limitation",
+    "per_seed": [
+      {
+        "seed": 1000,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.6977,
+          "accuracy": 0.6667,
+          "fpr": 0.0833
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8979,
+          "accuracy": 0.8906,
+          "fpr": 0.0269
+        }
+      },
+      {
+        "seed": 1001,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.6757,
+          "accuracy": 0.6444,
+          "fpr": 0.0889
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8035,
+          "accuracy": 0.7933,
+          "fpr": 0.051
+        }
+      },
+      {
+        "seed": 1002,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.6663,
+          "accuracy": 0.6333,
+          "fpr": 0.0917
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8839,
+          "accuracy": 0.8757,
+          "fpr": 0.0309
+        }
+      },
+      {
+        "seed": 1003,
+        "random": {
+          "f1": 0.9833,
+          "accuracy": 0.9833,
+          "fpr": 0.0042
+        },
+        "clone_aware": {
+          "f1": 0.6738,
+          "accuracy": 0.6444,
+          "fpr": 0.0889
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8003,
+          "accuracy": 0.7829,
+          "fpr": 0.0531
+        }
+      },
+      {
+        "seed": 1004,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.7397,
+          "accuracy": 0.7111,
+          "fpr": 0.0722
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8276,
+          "accuracy": 0.8114,
+          "fpr": 0.0475
+        }
+      },
+      {
+        "seed": 1005,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.7332,
+          "accuracy": 0.7056,
+          "fpr": 0.0736
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.9076,
+          "accuracy": 0.9043,
+          "fpr": 0.0237
+        }
+      },
+      {
+        "seed": 1006,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.7384,
+          "accuracy": 0.7111,
+          "fpr": 0.0722
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.7604,
+          "accuracy": 0.733,
+          "fpr": 0.0648
+        }
+      },
+      {
+        "seed": 1007,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.7472,
+          "accuracy": 0.7222,
+          "fpr": 0.0694
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8808,
+          "accuracy": 0.8703,
+          "fpr": 0.0322
+        }
+      },
+      {
+        "seed": 1008,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.6656,
+          "accuracy": 0.6333,
+          "fpr": 0.0917
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.9081,
+          "accuracy": 0.904,
+          "fpr": 0.0235
+        }
+      },
+      {
+        "seed": 1009,
+        "random": {
+          "f1": 1.0,
+          "accuracy": 1.0,
+          "fpr": 0.0
+        },
+        "clone_aware": {
+          "f1": 0.716,
+          "accuracy": 0.6889,
+          "fpr": 0.0778
+        },
+        "temporal": {
+          "f1": 0.7545,
+          "accuracy": 0.7278,
+          "fpr": 0.0681
+        },
+        "detector_aware": {
+          "f1": 0.8402,
+          "accuracy": 0.8324,
+          "fpr": 0.0416
+        }
+      }
+    ],
+    "summary": {
+      "random": {
+        "f1_mean": 0.9983,
+        "f1_sd": 0.0053,
+        "f1_values": [
+          1.0,
+          1.0,
+          1.0,
+          0.9833,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "ci95": [
+          0.995,
+          1.0
+        ]
+      },
+      "clone_aware": {
+        "f1_mean": 0.7054,
+        "f1_sd": 0.0333,
+        "f1_values": [
+          0.6977,
+          0.6757,
+          0.6663,
+          0.6738,
+          0.7397,
+          0.7332,
+          0.7384,
+          0.7472,
+          0.6656,
+          0.716
+        ],
+        "ci95": [
+          0.6859,
+          0.7249
+        ]
+      },
+      "temporal": {
+        "f1_mean": 0.7545,
+        "f1_sd": 0.0,
+        "f1_values": [
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545,
+          0.7545
+        ],
+        "ci95": [
+          0.7545,
+          0.7545
+        ]
+      },
+      "detector_aware": {
+        "f1_mean": 0.851,
+        "f1_sd": 0.052,
+        "f1_values": [
+          0.8979,
+          0.8035,
+          0.8839,
+          0.8003,
+          0.8276,
+          0.9076,
+          0.7604,
+          0.8808,
+          0.9081,
+          0.8402
+        ],
+        "ci95": [
+          0.8188,
+          0.8812
+        ]
+      }
+    },
+    "gap_random_minus_clone": {
+      "mean_diff": 0.293,
+      "ci95": [
+        0.2742,
+        0.3115
+      ],
+      "p_value": 0.0,
+      "n": 10
+    },
+    "mcnemar_on_family_aggregated_pairs": {
+      "ours_only_correct": 10,
+      "baseline_only_correct": 0,
+      "p_value": 0.002
+    },
+    "holm": [
+      {
+        "index": 0,
+        "p": 0.0,
+        "p_adj": 0.0,
+        "reject": true
+      },
+      {
+        "index": 1,
+        "p": 0.002,
+        "p_adj": 0.002,
+        "reject": true
+      }
+    ]
+  },
+  "E7_calibration": {
+    "target": "binary vulnerable-vs-safe",
+    "score": "1 - p(safe)",
+    "baselines": {
+      "binary_positive_rate": 0.8,
+      "constant_vulnerable_accuracy": 0.8,
+      "five_class_accuracy_same_split": 0.6444,
+      "binary_accuracy_coarsened_argmax": 0.9333
+    },
+    "n_test": 180,
+    "uncalibrated": {
+      "ece": 0.0598,
+      "ece_adaptive": {
+        "ece": 0.0987,
+        "bins": [
+          {
+            "n": 18,
+            "conf": 0.15,
+            "acc": 0.0,
+            "gap": 0.15
+          },
+          {
+            "n": 18,
+            "conf": 0.6113,
+            "acc": 0.6667,
+            "gap": 0.0553
+          },
+          {
+            "n": 18,
+            "conf": 0.8023,
+            "acc": 0.6111,
+            "gap": 0.1911
+          },
+          {
+            "n": 18,
+            "conf": 0.8023,
+            "acc": 0.7222,
+            "gap": 0.08
+          },
+          {
+            "n": 18,
+            "conf": 0.8023,
+            "acc": 1.0,
+            "gap": 0.1977
+          },
+          {
+            "n": 18,
+            "conf": 0.8324,
+            "acc": 1.0,
+            "gap": 0.1676
+          },
+          {
+            "n": 18,
+            "conf": 0.9431,
+            "acc": 1.0,
+            "gap": 0.0569
+          },
+          {
+            "n": 18,
+            "conf": 0.9594,
+            "acc": 1.0,
+            "gap": 0.0406
+          },
+          {
+            "n": 18,
+            "conf": 0.9727,
+            "acc": 1.0,
+            "gap": 0.0273
+          },
+          {
+            "n": 18,
+            "conf": 0.9796,
+            "acc": 1.0,
+            "gap": 0.0204
+          }
+        ]
+      },
+      "brier": 0.0627,
+      "risk_coverage": {
+        "aurc": 0.0484,
+        "risk_definition": "R(c)=1-accuracy among the c most confident predictions",
+        "n": 180,
+        "coverage_grid": [
+          0.0056,
+          0.1056,
+          0.2056,
+          0.3056,
+          0.4056,
+          0.5056,
+          0.6056,
+          0.7056,
+          0.8056,
+          0.9056
+        ],
+        "risk_grid": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1209,
+          0.1009,
+          0.0866,
+          0.0828,
+          0.0736
+        ],
+        "coverage_endpoint_1p0": 1.0,
+        "risk_at_full_coverage": 0.0667,
+        "binary_accuracy_denominator": 0.9333,
+        "max_coverage_at_risk_le_0.10": 1.0,
+        "selective_risk@0.8": 0.0833
+      }
+    },
+    "temperature_scaled": {
+      "T": 0.65,
+      "nll": 0.2078,
+      "ece": 0.0351,
+      "ece_adaptive": {
+        "ece": 0.077,
+        "bins": [
+          {
+            "n": 18,
+            "conf": 0.0705,
+            "acc": 0.0,
+            "gap": 0.0705
+          },
+          {
+            "n": 18,
+            "conf": 0.6422,
+            "acc": 0.6667,
+            "gap": 0.0245
+          },
+          {
+            "n": 18,
+            "conf": 0.8961,
+            "acc": 0.6111,
+            "gap": 0.285
+          },
+          {
+            "n": 18,
+            "conf": 0.8961,
+            "acc": 0.7222,
+            "gap": 0.1739
+          },
+          {
+            "n": 18,
+            "conf": 0.8961,
+            "acc": 1.0,
+            "gap": 0.1039
+          },
+          {
+            "n": 18,
+            "conf": 0.9158,
+            "acc": 1.0,
+            "gap": 0.0842
+          },
+          {
+            "n": 18,
+            "conf": 0.9868,
+            "acc": 1.0,
+            "gap": 0.0132
+          },
+          {
+            "n": 18,
+            "conf": 0.9922,
+            "acc": 1.0,
+            "gap": 0.0078
+          },
+          {
+            "n": 18,
+            "conf": 0.9959,
+            "acc": 1.0,
+            "gap": 0.0041
+          },
+          {
+            "n": 18,
+            "conf": 0.9974,
+            "acc": 1.0,
+            "gap": 0.0026
+          }
+        ]
+      },
+      "brier": 0.0589,
+      "isotonic": {
+        "ece": 0.0,
+        "brier": 0.0567
+      },
+      "risk_coverage": {
+        "aurc": 0.0484,
+        "risk_definition": "R(c)=1-accuracy among the c most confident predictions",
+        "n": 180,
+        "coverage_grid": [
+          0.0056,
+          0.1056,
+          0.2056,
+          0.3056,
+          0.4056,
+          0.5056,
+          0.6056,
+          0.7056,
+          0.8056,
+          0.9056
+        ],
+        "risk_grid": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1209,
+          0.1009,
+          0.0866,
+          0.0828,
+          0.0736
+        ],
+        "coverage_endpoint_1p0": 1.0,
+        "risk_at_full_coverage": 0.0667,
+        "binary_accuracy_denominator": 0.9333,
+        "max_coverage_at_risk_le_0.10": 1.0,
+        "selective_risk@0.8": 0.0833
+      }
+    },
+    "conformal": {
+      "rule": "abstain when |s-0.5| <= delta (decision-boundary conformal)",
+      "delta": 0.3023,
+      "threshold": 0.1977,
+      "threshold_upper": 0.8023,
+      "accept_rate": 0.4889,
+      "abstain_rate": 0.5111,
+      "target": "binary vulnerable-vs-safe from the same calibrated subset",
+      "decision_rule": "score >= 0.5 on accepted items",
+      "accepted_accuracy": 1.0,
+      "overall_accuracy_same_target": 0.9333,
+      "accuracy_gain_on_accepted": 0.0667,
+      "alpha": 0.1
+    },
+    "confidence_spread": {
+      "min": 0.1102,
+      "max": 0.9816,
+      "std": 0.2539
+    }
+  }
+}

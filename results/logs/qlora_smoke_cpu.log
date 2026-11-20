@@ -1,0 +1,24 @@
+[epoch 1/3] loss=1.7826 val_acc=0.1250
+[epoch 2/3] loss=1.7152 val_acc=0.1250
+[epoch 3/3] loss=1.7007 val_acc=0.1250
+{
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 1.7826,
+      "val_acc": 0.125
+    },
+    {
+      "epoch": 1,
+      "train_loss": 1.7152,
+      "val_acc": 0.125
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.7007,
+      "val_acc": 0.125
+    }
+  ],
+  "final_val_acc": 0.125,
+  "result_file": "D:\\Financial Micro-Modelling Project\\Blockchain Risk Management Model\\results\\qlora_smoke_result.json"
+}

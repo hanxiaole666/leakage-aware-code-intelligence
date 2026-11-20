@@ -1,0 +1,18 @@
+WARNING: Ignoring invalid distribution ~orch (C:\Users\apple\anaconda3\Lib\site-packages)
+Looking in indexes: https://download.pytorch.org/whl/cu118
+Collecting torch==2.2.1+cu118
+  Downloading https://download-r2.pytorch.org/whl/cu118/torch-2.2.1%2Bcu118-cp311-cp311-win_amd64.whl (2704.2 MB)
+     ---------------------------------------- 2.7/2.7 GB 409.0 kB/s eta 0:00:00
+Requirement already satisfied: filelock in c:\users\apple\anaconda3\lib\site-packages (from torch==2.2.1+cu118) (4.0.0)
+Requirement already satisfied: typing-extensions>=4.8.0 in c:\users\apple\anaconda3\lib\site-packages (from torch==2.2.1+cu118) (4.16.0)
+Requirement already satisfied: sympy in c:\users\apple\anaconda3\lib\site-packages (from torch==2.2.1+cu118) (1.14.0)
+Requirement already satisfied: networkx in c:\users\apple\anaconda3\lib\site-packages (from torch==2.2.1+cu118) (3.1)
+Requirement already satisfied: jinja2 in c:\users\apple\anaconda3\lib\site-packages (from torch==2.2.1+cu118) (3.1.2)
+Requirement already satisfied: fsspec in c:\users\apple\anaconda3\lib\site-packages (from torch==2.2.1+cu118) (2024.6.1)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\apple\anaconda3\lib\site-packages (from jinja2->torch==2.2.1+cu118) (2.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\users\apple\anaconda3\lib\site-packages (from sympy->torch==2.2.1+cu118) (1.3.0)
+WARNING: Ignoring invalid distribution ~orch (C:\Users\apple\anaconda3\Lib\site-packages)
+Installing collected packages: torch
+ERROR: Could not install packages due to an OSError: [Errno 28] No space left on device
+
+EXIT=1

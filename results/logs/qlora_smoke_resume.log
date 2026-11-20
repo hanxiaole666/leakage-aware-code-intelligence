@@ -1,0 +1,42 @@
+[epoch 1/6] loss=1.7467 val_acc=0.1250
+[epoch 2/6] loss=1.6973 val_acc=0.1250
+[epoch 3/6] loss=1.6841 val_acc=0.2083
+[epoch 4/6] loss=1.6292 val_acc=0.2083
+[epoch 5/6] loss=1.5877 val_acc=0.2083
+[epoch 6/6] loss=1.5418 val_acc=0.2083
+{
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 1.7467,
+      "val_acc": 0.125
+    },
+    {
+      "epoch": 1,
+      "train_loss": 1.6973,
+      "val_acc": 0.125
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.6841,
+      "val_acc": 0.2083
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.6292,
+      "val_acc": 0.2083
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.5877,
+      "val_acc": 0.2083
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.5418,
+      "val_acc": 0.2083
+    }
+  ],
+  "final_val_acc": 0.2083,
+  "result_file": "D:\\Financial Micro-Modelling Project\\Blockchain Risk Management Model\\results\\qlora_smoke_result.json"
+}

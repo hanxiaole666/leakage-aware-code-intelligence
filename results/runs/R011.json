@@ -1,0 +1,71 @@
+{
+  "run_id": "R011",
+  "milestone": "M2",
+  "block": "B1",
+  "variant": "ours",
+  "split": "random",
+  "seed": 42,
+  "feature_flags": {
+    "use_struct": true,
+    "use_signal": true,
+    "use_shortcut": true
+  },
+  "audit": {
+    "n_train": 840,
+    "n_val": 180,
+    "n_test": 180,
+    "sample_overlap_rate": 0.0,
+    "true_family_overlap_rate": 0.9833,
+    "shortcut_overlap_legacy": 0.9833,
+    "shortcut_overlap_is_redundant_with_true_family": true,
+    "detected_cluster_overlap_rate": 0.9111,
+    "clone_family_overlap_rate": 0.9833
+  },
+  "metrics": {
+    "accuracy": 0.9889,
+    "f1_macro": 0.9889,
+    "f1_micro": 0.9889,
+    "precision_macro": 0.9895,
+    "recall_macro": 0.9889,
+    "mcc": 0.9863,
+    "fpr": 0.0028,
+    "auprc_macro": 1.0
+  },
+  "per_class": [
+    {
+      "label": "reentrancy",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 36
+    },
+    {
+      "label": "timestamp",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 36
+    },
+    {
+      "label": "overflow",
+      "precision": 0.9474,
+      "recall": 1.0,
+      "f1": 0.973,
+      "support": 36
+    },
+    {
+      "label": "access_control",
+      "precision": 1.0,
+      "recall": 0.9444,
+      "f1": 0.9714,
+      "support": 36
+    },
+    {
+      "label": "safe",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 36
+    }
+  ]
+}

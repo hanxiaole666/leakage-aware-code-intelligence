@@ -1,0 +1,98 @@
+# Leakage-Aware Evaluation: Audit Code and Evidence
+
+Companion code for the manuscript *A Detector Is Not Its Own Audit: Measuring Family Leakage Two Ways in a Controlled Code-Vulnerability Corpus*, submitted to **Journal**.
+
+> **What this repository is for.** Every number printed in the paper is produced by the code here and stored as a JSON record. A reviewer or developer can start from a table cell, find the run ID, open the JSON, and re-run the experiment. This README is the entry point.
+
+---
+
+## 1. The one idea
+
+A split built from detected near-duplicate clusters sets overlap to zero **by construction**, under the detector's own labels. It says nothing about overlap under the true families. On our corpus the detector's pair recall is 0.6983, and a detector-aware split leaves 0.4084 of test items sharing a true family with training.
+
+The paper measures overlap twice and asks how much of a score gap is carried by overlap. It also shows that low-score conformal abstention is anti-selective on a skewed binary target, and that a correctly built split-conformal rule here meets its coverage bound but abstains on nothing.
+
+---
+
+## 2. Repository map
+
+| Path | What it contains |
+|---|---|
+| `experiment_suite/config.py` | Run registry, paths, seeds, task labels |
+| `experiment_suite/data/synthesize.py` | Synthetic corpus generator (1,200 contracts, 200 families) |
+| `experiment_suite/data/fingerprints.py` | Normalisation, MinHash, LSH, clustering, pair metrics, exact-match baseline |
+| `experiment_suite/data/splits.py` | Four protocols and the two-way overlap audit |
+| `experiment_suite/models/features.py` | Structural / semantic / shortcut feature groups |
+| `experiment_suite/models/estimators.py` | Estimator factory |
+| `experiment_suite/eval/` | Metrics, calibration, statistics (bootstrap, McNemar, Holm) |
+| `experiment_suite/runner.py` | Executes R001–R043, writes `results/runs/<id>.json` |
+| `experiment_suite/revision_experiments.py` | E1–E5 and E7 evidence -> `results/revision_evidence.json` |
+| `experiment_suite/round2_experiments.py` | Dose–response and real-corpus audit -> `results/round2_evidence.json` |
+| `experiment_suite/make_manuscript.py` | Legacy table generator |
+| `results/runs/*.json` | One record per named run |
+| `results/revision_evidence.json` | Two-way overlap, detector sweep, holdout, diversity, 10 seeds, calibration |
+| `results/round2_evidence.json` | Dose–response with intervals and SmartBugs audit |
+| `results/logs/` | Checkpoint, restore and LoRA self-test logs |
+| `figures/` | Vector PDFs and `figure_provenance.json` with every plotted number |
+| `tests/test_pipeline.py` | 8 unit tests for the pipeline |
+
+---
+
+## 3. Reproduce in five commands
+
+```bash
+python -m pip install -r requirements.txt
+python -m pytest tests/ -q
+python -m experiment_suite.runner --all
+python -m experiment_suite.revision_experiments
+python -m experiment_suite.round2_experiments
+python verify_data_consistency.py     # 121 checks; exit 0 means paper == data
+```
+
+On the development machine the interpreter was `C:/Users/apple/anaconda3/python.exe`, with Python 3.x, scikit-learn 1.5.2, SciPy 1.17.1, NumPy 1.26.4 and matplotlib 3.7.2. No GPU is needed for any result in the paper.
+
+---
+
+## 4. Run registry (21 named configurations)
+
+R001 sanity; R002 clone audit; R003 majority-class reference; R004 detector-aware split; R005 shortcut ablation; R011–R013 random / oracle / temporal surrogates; R020–R021 structural / semantic ablations; R022–R023 withdrawn DPO/CPT proxy rows (archived, not used); R030–R031 resource proxies; R040 temperature scaling; R041 uncalibrated reference; R042 empirical abstention rules (aliases R042a low-score, R042b boundary); R043 split conformal; R050–R051 robustness; R060 leave-one-out.
+
+IDs are sparse labels, not a count. Ten seeds are repetitions **within** a run, not additional named runs.
+
+---
+
+## 5. Paper-to-code traceability
+
+| Paper location | Source file | JSON field |
+|---|---|---|
+| Table 2, two-way overlap | `results/revision_evidence.json` | `E1_dual_overlap.overlap_by_protocol` |
+| Table 3, single-seed scores | `results/runs/R0xx.json` | `metrics.*` |
+| Table 4, threshold sweep | `results/revision_evidence.json` | `E3_detector_profile.threshold_sweep` |
+| Table 5, dose–response | `results/round2_evidence.json` | `D4_dose_response` |
+| Table 6, diversity | `results/revision_evidence.json` | `E4_diversity` |
+| Table 7, calibration | `results/runs/R040–R043.json` | `calibration.*` |
+| Table 8, sample derivation | `results/round2_evidence.json` | `R5_real_corpus.sample_provenance` |
+| Table 9, multi-seed | `results/revision_evidence.json` | `E5_multiseed.summary` |
+| Figures 1–3 | `figures/figure_provenance.json` | plotted values |
+
+`verify_data_consistency.py` checks 121 of these links. A table generator asserts that no two rows of a multi-row table share a configuration hash.
+
+---
+
+## 6. Data and licensing
+
+* `data/processed/synthetic_contracts.jsonl` is generated by the script, not a real vulnerability corpus. Contracts are synthetic and contain no real-world security findings.
+* `results/runs/` and `results/*evidence.json` are the authoritative result records.
+* The 36-contract SmartBugs sample is derived from the public `smartbugs/smartbugs-curated` repository. It carries vulnerability-category labels only, not clone-family ground truth. Its pair metrics are category agreement, not clone-family recall.
+* Licence: MIT. The paper version tag is `v1.0-eswa`.
+* Persistent identifier: to be added at proof (Zenodo or Software Heritage). Until then the repository URL is the locator.
+
+---
+
+## 7. Known limitations
+
+1. One synthetic corpus and one linear estimator. The real-code audit is a feasibility demonstration.
+2. Generator seed is fixed; intervals cover split and estimator variance.
+3. Each leaked family supplies one sibling, so dose measures presence, not depth of leakage.
+4. SmartBugs has no manual clone-family labels; no real-code family recall is claimed.
+5. The LoRA checkpoint script is an engineering self-test of the release infrastructure and is unrelated to the linear predictor used in the paper.

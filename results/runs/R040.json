@@ -1,0 +1,192 @@
+{
+  "run_id": "R040",
+  "milestone": "M4",
+  "block": "B4",
+  "variant": "calib_ts",
+  "split": "clone_aware",
+  "seed": 42,
+  "feature_flags": {
+    "use_struct": true,
+    "use_signal": true,
+    "use_shortcut": true
+  },
+  "audit": {
+    "n_train": 840,
+    "n_val": 180,
+    "n_test": 180,
+    "sample_overlap_rate": 0.0,
+    "true_family_overlap_rate": 0.0,
+    "shortcut_overlap_legacy": 0.0,
+    "shortcut_overlap_is_redundant_with_true_family": true,
+    "detected_cluster_overlap_rate": 0.0,
+    "clone_family_overlap_rate": 0.0
+  },
+  "metrics": {
+    "accuracy": 0.6444,
+    "f1_macro": 0.6749,
+    "f1_micro": 0.6444,
+    "precision_macro": 0.872,
+    "recall_macro": 0.6444,
+    "mcc": 0.6206,
+    "fpr": 0.0889,
+    "auprc_macro": 0.7162
+  },
+  "per_class": [
+    {
+      "label": "reentrancy",
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "support": 36
+    },
+    {
+      "label": "timestamp",
+      "precision": 1.0,
+      "recall": 0.5833,
+      "f1": 0.7368,
+      "support": 36
+    },
+    {
+      "label": "overflow",
+      "precision": 0.36,
+      "recall": 1.0,
+      "f1": 0.5294,
+      "support": 36
+    },
+    {
+      "label": "access_control",
+      "precision": 1.0,
+      "recall": 0.4722,
+      "f1": 0.6415,
+      "support": 36
+    },
+    {
+      "label": "safe",
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "support": 36
+    }
+  ],
+  "calibration": {
+    "target": "binary vulnerable-vs-safe",
+    "score": "1 - p(safe)",
+    "baselines": {
+      "binary_positive_rate": 0.8,
+      "constant_vulnerable_accuracy": 0.8,
+      "five_class_accuracy_same_split": 0.6444,
+      "binary_accuracy_coarsened_argmax": 0.9333
+    },
+    "temperature": {
+      "T": 0.65,
+      "nll": 0.2078
+    },
+    "ece_before": 0.0598,
+    "ece_after": 0.0351,
+    "brier": 0.0589,
+    "ece_adaptive_after": {
+      "ece": 0.077,
+      "bins": [
+        {
+          "n": 18,
+          "conf": 0.0705,
+          "acc": 0.0,
+          "gap": 0.0705
+        },
+        {
+          "n": 18,
+          "conf": 0.6422,
+          "acc": 0.6667,
+          "gap": 0.0245
+        },
+        {
+          "n": 18,
+          "conf": 0.8961,
+          "acc": 0.6111,
+          "gap": 0.285
+        },
+        {
+          "n": 18,
+          "conf": 0.8961,
+          "acc": 0.7222,
+          "gap": 0.1739
+        },
+        {
+          "n": 18,
+          "conf": 0.8961,
+          "acc": 1.0,
+          "gap": 0.1039
+        },
+        {
+          "n": 18,
+          "conf": 0.9158,
+          "acc": 1.0,
+          "gap": 0.0842
+        },
+        {
+          "n": 18,
+          "conf": 0.9868,
+          "acc": 1.0,
+          "gap": 0.0132
+        },
+        {
+          "n": 18,
+          "conf": 0.9922,
+          "acc": 1.0,
+          "gap": 0.0078
+        },
+        {
+          "n": 18,
+          "conf": 0.9959,
+          "acc": 1.0,
+          "gap": 0.0041
+        },
+        {
+          "n": 18,
+          "conf": 0.9974,
+          "acc": 1.0,
+          "gap": 0.0026
+        }
+      ]
+    },
+    "isotonic": {
+      "ece": 0.0,
+      "brier": 0.0567
+    },
+    "risk_coverage": {
+      "aurc": 0.0484,
+      "risk_definition": "R(c)=1-accuracy among the c most confident predictions",
+      "n": 180,
+      "coverage_grid": [
+        0.0056,
+        0.1056,
+        0.2056,
+        0.3056,
+        0.4056,
+        0.5056,
+        0.6056,
+        0.7056,
+        0.8056,
+        0.9056
+      ],
+      "risk_grid": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1209,
+        0.1009,
+        0.0866,
+        0.0828,
+        0.0736
+      ],
+      "coverage_endpoint_1p0": 1.0,
+      "risk_at_full_coverage": 0.0667,
+      "binary_accuracy_denominator": 0.9333,
+      "max_coverage_at_risk_le_0.10": 1.0,
+      "selective_risk@0.8": 0.0833
+    },
+    "aurc_rank_invariance_note": "temperature scaling is strictly monotone, so the confidence ranking and AURC are unchanged"
+  }
+}

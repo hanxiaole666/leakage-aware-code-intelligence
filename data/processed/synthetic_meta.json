@@ -1,0 +1,16 @@
+{
+  "n_records": 1200,
+  "n_families": 200,
+  "n_families_per_label": 40,
+  "variants_per_family": 6,
+  "seed": 42,
+  "labels": [
+    "reentrancy",
+    "timestamp",
+    "overflow",
+    "access_control",
+    "safe"
+  ],
+  "synthetic": true,
+  "purpose": "M0/M1 pipeline sanity + leakage claim demonstration (NOT real SOTA)"
+}

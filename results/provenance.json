@@ -1,0 +1,27 @@
+{
+  "provenance": {
+    "real_downloads": {},
+    "n_records": 1200,
+    "synthetic": true,
+    "source_file": "D:\\Financial Micro-Modelling Project\\Blockchain Risk Management Model\\data\\processed\\synthetic_contracts.jsonl",
+    "note": "M0/M1 骨架：合成克隆族数据；真实 3B 结果需接入真实集 + 大模型"
+  },
+  "state": {
+    "runs": {
+      "R043": {
+        "status": "done",
+        "metrics": {
+          "accuracy": 0.6444,
+          "f1_macro": 0.6749,
+          "f1_micro": 0.6444,
+          "precision_macro": 0.872,
+          "recall_macro": 0.6444,
+          "mcc": 0.6206,
+          "fpr": 0.0889,
+          "auprc_macro": 0.7162
+        },
+        "result_file": "D:\\Financial Micro-Modelling Project\\Blockchain Risk Management Model\\results\\runs\\R043.json"
+      }
+    }
+  }
+}

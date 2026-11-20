@@ -1,0 +1,33 @@
+{
+  "mode": "smoke_random_init_lora",
+  "device": "cuda",
+  "epochs": 4,
+  "n_train": 96,
+  "n_val": 24,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 1.7347,
+      "val_acc": 0.125
+    },
+    {
+      "epoch": 1,
+      "train_loss": 1.729,
+      "val_acc": 0.125
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.6576,
+      "val_acc": 0.0833
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.6558,
+      "val_acc": 0.0833
+    }
+  ],
+  "resumed_from_epoch": 2,
+  "final_val_acc": 0.0833,
+  "bnb_available": false,
+  "honest_note": "验证真实 LoRA 训练/续跑工程正确性；非 3B 模型性能结论"
+}
